@@ -32,6 +32,8 @@ public class ThePain
         L1.add((AnyType) new Integer(2));
         L1.add((AnyType) new Integer(3));
         L1.add((AnyType) new Integer(4));
+        L1.add((AnyType) new Integer(5));
+        L1.add((AnyType) new Integer(8));
 
         L2.add((AnyType) new Integer(2));
         L2.add((AnyType) new Integer(6));
