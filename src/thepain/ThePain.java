@@ -34,6 +34,7 @@ public class ThePain
         L1.add((AnyType) new Integer(4));
         L1.add((AnyType) new Integer(5));
         L1.add((AnyType) new Integer(8));
+        L1.add((AnyType) new Integer(8));
 
         L2.add((AnyType) new Integer(2));
         L2.add((AnyType) new Integer(6));
@@ -145,8 +146,7 @@ public class ThePain
                     same.add(itemL1);
                     inc++;
                 }
-                if(iterL2.hasNext()) itemL2 = iterL2.next();
-                if (itemL2 == null)
+                if (!iterL2.hasNext())
                 {
                     count++;
                     if(iterL1.hasNext())itemL1 = iterL1.next();
@@ -154,6 +154,8 @@ public class ThePain
                     iterL2 = L2.listIterator();
                     itemL2 = iterL2.next();
                 }
+                else
+                itemL2 = iterL2.next();
                 
             }
             else if(eq != 0)
