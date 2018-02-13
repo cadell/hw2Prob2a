@@ -75,11 +75,15 @@ public class ThePain {
                 comp = itemL1.compareTo(itemL2);
                 
             }
-            if(comp != 0 && inc ==0) 
+            if(comp != 0) 
             {
                 //System.out.println("Here");
-                Difference.add(itemL1);
-                inc++;
+                if(inc ==0)
+                {
+                    Difference.add(itemL1);
+                    inc++;
+                }
+                
                 itemL2 = iterL2.hasNext()?iterL2.next():null;
             }
             else if(comp == 0)
