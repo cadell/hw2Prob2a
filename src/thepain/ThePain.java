@@ -86,44 +86,4 @@ public class ThePain
             System.out.println(s);
         }
     }
-
-    public static <AnyType extends Comparable<? super AnyType>> void interception(List<AnyType> L1, List<AnyType> L2, List<AnyType> same)
-    {
-        AnyType itemL1 = null;
-        AnyType itemL2 = null;
-        ListIterator<AnyType> iterL1 = L1.listIterator();
-        ListIterator<AnyType> iterL2 = L2.listIterator();
-
-        if (iterL1.hasNext() && iterL2.hasNext())
-        {
-            itemL1 = iterL1.next();
-            itemL2 = iterL2.next();
-        }
-        
-        int counter =0;
-        int amount  =0;
-        while(counter < L1.size())
-        {
-            int comp = itemL1.compareTo(itemL2);
-            if(iterL2.hasNext())itemL2 = iterL2.next();
-            if(comp == 0) amount+=1;
-             
-            if(!iterL2.hasNext())
-            {
-                comp = itemL1.compareTo(itemL2);
-                if(comp == 0) amount+=1;
-                if(amount == L2.size()) same.add(itemL1);
-                counter++;
-                amount =0;
-                itemL1 = iterL1.hasNext()?iterL1.next():null;
-                iterL2 = L2.listIterator();
-                itemL2 = iterL2.next();
-            }
-        }
-        
-        for (AnyType s : same)
-        {
-            System.out.println(s);
-        }
-    }
 }
