@@ -34,6 +34,7 @@ public class ThePain
         L1.add((AnyType) new Integer(5));
         L1.add((AnyType) new Integer(8));
         L1.add((AnyType) new Integer(10));
+        L1.add((AnyType) new Integer(9));
         
 
         L2.add((AnyType) new Integer(2));
@@ -41,6 +42,7 @@ public class ThePain
         L2.add((AnyType) new Integer(7));
         L2.add((AnyType) new Integer(8));
         L2.add((AnyType) new Integer(9));
+        L2.add((AnyType) new Integer(4));
         difference(L1, L2, Difference);
         System.out.println("");
         interception(L1, L2, same);
@@ -82,6 +84,55 @@ public class ThePain
         }
         
         for (AnyType s : Difference)
+        {
+            System.out.println(s);
+        }
+    }
+    public static <AnyType extends Comparable<? super AnyType>> void interception(List<AnyType> L1, List<AnyType> L2, List<AnyType> same)
+    {
+        AnyType itemL1 = null;
+        AnyType itemL2 = null;
+
+        ListIterator<AnyType> iterL1 = L1.listIterator();
+        ListIterator<AnyType> iterL2 = L2.listIterator();
+
+        if (iterL1.hasNext() && iterL2.hasNext())
+        {
+            itemL1 = iterL1.next();
+            itemL2 = iterL2.next();
+        }
+        
+        
+        int counter = 0;
+        while(counter < L1.size() )//|| itemL2 == null)
+        {
+            //System.out.println(itemL1);
+           //System.out.println(itemL2);
+            int comp =0;
+           // if (itemL1 != null && itemL2 != null)
+            comp = itemL1.compareTo(itemL2);
+            if(comp == 0)
+            {
+                same.add(itemL1);
+                if(iterL2.hasNext()) itemL2 = iterL2.next();
+                if(iterL1.hasNext()) itemL1 = iterL1.next();
+                counter++;
+            }
+            else
+            {
+                itemL2 = iterL2.hasNext()?iterL2.next():null;
+                if(itemL2 == null)
+                {
+                    counter++;
+                    if(iterL1.hasNext()) itemL1 = iterL1.next();
+                    iterL2 = L2.listIterator();
+                    if(iterL2.hasNext()) itemL2 = iterL2.next();
+//                    itemL2 = iterL2.hasNext()?iterL2.next():null;
+                }
+            }
+            
+        }
+        for (AnyType s : same)
         {
             System.out.println(s);
         }
